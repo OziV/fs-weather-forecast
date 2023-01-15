@@ -1,0 +1,19 @@
+{
+  "name": "oz-ziv-15-01-2023-fullstack",
+  "version": "1.0.0",
+  "description": "Realcommerce‎‎",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OziV/oz-ziv-15-01-2023-fullstack.git"
+  },
+  "author": "oz ziv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OziV/oz-ziv-15-01-2023-fullstack/issues"
+  },
+  "homepage": "https://github.com/OziV/oz-ziv-15-01-2023-fullstack#readme"
+}
