@@ -22,11 +22,22 @@ const getAllFromFavorites = async (req, res, next) => {
   }
 };
 
-const removeFromFavorites = async (req, res, next) => {
-  let { city } = req.body;
+const getFavoriteCity = async (req, res, next) => {
+  let { city } = req.params;
   try {
-    const [favorites, _] = await Favorite.deleteCity(city);
-    res.status(StatusCodes.OK).json("Deleted successfully");
+    const [favorites, _] = await Favorite.findByCity(city);
+    res.status(StatusCodes.OK).json(favorites);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const removeFromFavorites = async (req, res, next) => {
+  let { city } = req.params;
+  try {
+    const deleteFavorite = await Favorite.deleteCity(city);
+    const [favorites, _] = await Favorite.findAll();
+    res.status(StatusCodes.OK).json(favorites);
   } catch (error) {
     console.log(error);
   }
@@ -35,5 +46,6 @@ const removeFromFavorites = async (req, res, next) => {
 module.exports = {
   getAllFromFavorites,
   addToFavorites,
+  getFavoriteCity,
   removeFromFavorites,
 };

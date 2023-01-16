@@ -6,7 +6,7 @@ class Favorite {
     this.temperature = temperature;
     this.text = text;
   }
- save() {
+  save() {
     let sql = `
       INSERT INTO favorites (
         city,

@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const weatherRouter = require("./routes/weather");
 const favoritesRouter = require("./routes/favorites");
+
+app.use(cors());
 
 app.use(express.json());
 app.use("/api/v1/weather", weatherRouter);

@@ -1,16 +1,19 @@
 require("dotenv").config();
 const axios = require("axios");
 const { StatusCodes } = require("http-status-codes");
+const jsonTel = require("../data_local_responses/tel.json");
+const jsonTelAviv = require("../data_local_responses/telAviv.json");
 
 const URL_AUTOCOMPLETE = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete`;
 const URL_CURRENT_CONDITIONS = `http://dataservice.accuweather.com/currentconditions/v1/`;
 
 const locationAutocomplete = async (req, res, next) => {
   let resultUrl;
-  const { name } = req.query;
+  const { find } = req.query;
+
   const queryObj = {};
-  if (name) {
-    let words = name.split(" ");
+  if (find) {
+    let words = find.split(" ");
     if (words.length > 1) {
       let cityName = words[0].concat("%20", words[1]);
       queryObj.q = cityName;
@@ -21,10 +24,10 @@ const locationAutocomplete = async (req, res, next) => {
   try {
     resultUrl = `${URL_AUTOCOMPLETE}?apikey=${process.env.API_KEY}&q=${queryObj.q}`;
     let response = await axios.get(resultUrl);
-    let responseData = await response.data[0].Key;
+    let responseData = await response.data;
     res.status(StatusCodes.OK).json(responseData);
   } catch (error) {
-    res.json(error.code);
+    console.log(error);
   }
 };
 
@@ -38,8 +41,8 @@ const getCurrentWeather = async (req, res, next) => {
   try {
     resultUrl = `${URL_CURRENT_CONDITIONS}${queryObj.id}?apikey=${process.env.API_KEY}`;
     let response = await axios.get(resultUrl);
-    let responseData = await response.data[0].Key;
-    res.status(StatusCodes.OK).json(responseData);
+    let responseData = await response.data[0];
+    res.status(StatusCodes.OK).json([responseData]);
   } catch (error) {
     res.json(error.code);
   }
