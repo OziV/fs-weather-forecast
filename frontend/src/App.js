@@ -5,6 +5,7 @@ import Nav from "./components/nav/Nav";
 import Search from "./components/search/Search";
 import Favorites from "./pages/favorites/Favorites";
 import Main from "./pages/main/Main";
+import Error from "./pages/error/Error";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

@@ -94,3 +94,17 @@ img {
   justify-content: center;
   align-items: center;
 }
+
+.list-btn {
+  background-color: #ffffff;
+  border-color:#ffffff;
+  border: none;
+  cursor: pointer;
+  font-size:large;
+}
+
+.page-center-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -7,7 +7,39 @@ const GlobalContext = React.createContext();
 
 const GlobalProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [favorites, setFavorites] = useState("666");
+  const [searchResults, setSearchResults] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [cityInfo, setCityInfo] = useState("");
+
+  const getLocationAutocomplete = async (city) => {
+    setIsLoading(true);
+    try {
+      let response = await axios({
+        method: "get",
+        url: `${rootUrl}/weather/find?find=${city}`,
+      });
+      let data = response.data;
+      setSearchResults(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+    setIsLoading(false);
+  };
+
+  const getCurrentWeather = async (cityData, cityName) => {
+    setIsLoading(true);
+    try {
+      let response = await axios({
+        method: "get",
+        url: `${rootUrl}/weather/${cityData}/${cityName}`,
+      });
+      let data = response.data;
+      setCityInfo([cityName, data]);
+    } catch (error) {
+      console.log(error.response);
+    }
+    setIsLoading(false);
+  };
 
   const getAllFavorites = async () => {
     setIsLoading(true);
@@ -17,6 +49,7 @@ const GlobalProvider = ({ children }) => {
         url: `${rootUrl}/favorites`,
       });
       let data = response.data;
+      setSearchResults(data);
       setFavorites(data);
     } catch (error) {
       console.log(error.response);
@@ -24,16 +57,51 @@ const GlobalProvider = ({ children }) => {
     setIsLoading(false);
   };
 
-  const getFavoriteByName = async (city) => {
+  const addToFavorites = async (city, temperature, text) => {
     setIsLoading(true);
     try {
       let response = await axios({
         method: "post",
         url: `${rootUrl}/favorites`,
-        data: city,
+        data: {
+          city,
+          temperature,
+          text,
+        },
       });
       let data = response.data;
-      setFavorites(data);
+      setSearchResults(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+    setIsLoading(false);
+  };
+
+  const getFavoriteByName = async (cityData) => {
+    setIsLoading(true);
+    try {
+      let response = await axios({
+        method: "get",
+        url: `${rootUrl}/favorites/${cityData}`,
+      });
+      let data = response.data;
+      setCityInfo(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+    setIsLoading(false);
+  };
+
+  const removeFavoriteByName = async (city) => {
+    setIsLoading(true);
+    try {
+      let response = await axios({
+        method: "delete",
+        url: `${rootUrl}/favorites/${city}`,
+      });
+      let data = response.data;
+      setCityInfo("");
+      setSearchResults(data);
     } catch (error) {
       console.log(error.response);
     }
@@ -47,7 +115,15 @@ const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        getAllFavorites,
+        getLocationAutocomplete,
+        getCurrentWeather,
+        searchResults,
         favorites,
+        cityInfo,
+        addToFavorites,
+        getFavoriteByName,
+        removeFavoriteByName,
       }}
     >
       {children}
