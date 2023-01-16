@@ -1,10 +1,20 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import List from "./components/list/List";
+import Nav from "./components/nav/Nav";
+import Search from "./components/search/Search";
+import Favorites from "./pages/favorites/Favorites";
+import Main from "./pages/main/Main";
 
 function App() {
   return (
-    <>
-      <h1>Weather Forecast WEB</h1>
-    </>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
