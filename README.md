@@ -4,8 +4,8 @@
 
 ## URLs
 
-[Weather Forecast Site](https://realcommerce-task.netlify.app/)
-[Weather Forecast Server](https://oziv-oz-ziv-15-01-2023-fullstack.onrender.com/)
+- [Weather Forecast Site](https://realcommerce-task.netlify.app/)
+- [Weather Forecast Server](https://oziv-oz-ziv-15-01-2023-fullstack.onrender.com/)
 
 ## Technologies
 
