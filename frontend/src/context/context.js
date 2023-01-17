@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const rootUrl = process.env.REACT_APP_SERVER_DEV;
+const rootUrl = process.env.REACT_APP_SERVER;
 
 const GlobalContext = React.createContext();
 
