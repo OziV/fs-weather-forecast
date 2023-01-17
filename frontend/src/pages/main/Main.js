@@ -5,12 +5,8 @@ import Search from "../../components/search/Search";
 import Section from "../../components/section/Section";
 
 const Main = () => {
-  const { searchResults, getLocationAutocomplete } = useContext(GlobalContext);
+  const { searchResults } = useContext(GlobalContext);
   const [isMain, setIsMain] = useState(true);
-
-  useEffect(() => {
-    getLocationAutocomplete();
-  }, []);
 
   return (
     <>

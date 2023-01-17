@@ -2,9 +2,11 @@ import React, { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../../context/context";
 
 export const List = (data) => {
-  const { getFavoriteByName, getCurrentWeather } = useContext(GlobalContext);
+  const { isLoading, getFavoriteByName, getCurrentWeather } =
+    useContext(GlobalContext);
   const [favoritesList, setFavoritesList] = useState();
   const [isMain, setIsMain] = useState(false);
+  const [isSwitch, setIsSwitch] = useState(false);
 
   const handleClick = (cityData, cityName) => {
     if (!isMain) {
@@ -26,6 +28,10 @@ export const List = (data) => {
   useEffect(() => {
     setIsMain(data.isMain);
   }, [data.isMain]);
+
+  useEffect(() => {
+    setIsSwitch(true);
+  }, [isLoading]);
 
   const textBuilder = (item, index) => {
     if (!isMain) {
@@ -58,7 +64,7 @@ export const List = (data) => {
         <div className="divider"></div>
         <div className="list-items">
           <ul>
-            {favoritesList
+            {!isLoading && favoritesList
               ? favoritesList.map((item, index) => {
                   return textBuilder(item, index);
                 })

@@ -1,14 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../context/context";
 import Button from "../../components/button/Button";
 import icon from "../../images/favorites.png";
-import { GlobalContext } from "../../context/context";
 
 const Section = (data) => {
-  const { cityInfo, favorites, addToFavorites, removeFavoriteByName } =
-    useContext(GlobalContext);
+  const {
+    isLoading,
+    cityInfo,
+    favorites,
+    addToFavorites,
+    removeFavoriteByName,
+  } = useContext(GlobalContext);
   const [cityInfoData, setCityInfoData] = useState("");
-  const [favoritesList, setFavoritesList] = useState(favorites);
   const [isMain, setIsMain] = useState(data.isMain);
+  const [isSwitch, setIsSwitch] = useState(false);
+  let navigate = useNavigate();
 
   const handleClick = (city, temperature, text, id) => {
     if (!isMain) {
@@ -16,6 +23,8 @@ const Section = (data) => {
     }
     if (isMain) {
       addToFavorites(city, temperature, text);
+      setIsMain(false);
+      navigate("/favorites");
     }
   };
 
@@ -27,6 +36,10 @@ const Section = (data) => {
       setCityInfoData(cityInfo[1]);
     }
   }, [cityInfo]);
+
+  useEffect(() => {
+    setIsSwitch(true);
+  }, [isLoading]);
 
   const textBuilder = (item, index) => {
     if (!isMain) {
@@ -84,12 +97,12 @@ const Section = (data) => {
 
   return (
     <>
-      {cityInfoData ? (
+      {!isLoading && cityInfoData && cityInfoData.length < 2 ? (
         cityInfoData.map((item, index) => {
           return textBuilder(item, index);
         })
       ) : (
-        <div className="main-container"></div>
+        <div className="main-container">Click on a city to get details</div>
       )}
     </>
   );

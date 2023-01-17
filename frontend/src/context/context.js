@@ -34,7 +34,7 @@ const GlobalProvider = ({ children }) => {
         url: `${rootUrl}/weather/${cityData}/${cityName}`,
       });
       let data = response.data;
-      setCityInfo([cityName, data]);
+      setCityInfo([cityName, data[0]]);
     } catch (error) {
       console.log(error.response);
     }
@@ -69,7 +69,7 @@ const GlobalProvider = ({ children }) => {
           text,
         },
       });
-      let data = response.data;
+      let data = await response.data;
       setSearchResults(data);
     } catch (error) {
       console.log(error.response);
@@ -93,7 +93,6 @@ const GlobalProvider = ({ children }) => {
   };
 
   const removeFavoriteByName = async (city) => {
-    setIsLoading(true);
     try {
       let response = await axios({
         method: "delete",
@@ -124,6 +123,7 @@ const GlobalProvider = ({ children }) => {
         addToFavorites,
         getFavoriteByName,
         removeFavoriteByName,
+        isLoading,
       }}
     >
       {children}
