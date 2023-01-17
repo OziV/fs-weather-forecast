@@ -13,7 +13,7 @@ router
   .route("/")
   .get(getAllFromFavorites)
   .post(
-    // isDuplicateCity,
+    isDuplicateCity,
     addToFavorites);
 
 router.route("/:city").get(getFavoriteCity).delete(removeFromFavorites);

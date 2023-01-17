@@ -22,10 +22,10 @@ const locationAutocomplete = async (req, res, next) => {
     }
   }
   try {
-    resultUrl = `${URL_AUTOCOMPLETE}?apikey=${process.env.API_KEY}&q=${queryObj.q}`;
-    let response = await axios.get(resultUrl);
-    let responseData = await response.data;
-    res.status(StatusCodes.OK).json(responseData);
+    // resultUrl = `${URL_AUTOCOMPLETE}?apikey=${process.env.API_KEY}&q=${queryObj.q}`;
+    // let response = await axios.get(resultUrl);
+    // let responseData = await response.data;
+    res.status(StatusCodes.OK).json(jsonTel);
   } catch (error) {
     console.log(error);
   }
@@ -39,10 +39,10 @@ const getCurrentWeather = async (req, res, next) => {
     queryObj.id = id;
   }
   try {
-    resultUrl = `${URL_CURRENT_CONDITIONS}${queryObj.id}?apikey=${process.env.API_KEY}`;
-    let response = await axios.get(resultUrl);
-    let responseData = await response.data[0];
-    res.status(StatusCodes.OK).json([responseData]);
+    // resultUrl = `${URL_CURRENT_CONDITIONS}${queryObj.id}?apikey=${process.env.API_KEY}`;
+    // let response = await axios.get(resultUrl);
+    // let responseData = await response.data[0];
+    res.status(StatusCodes.OK).json([jsonTelAviv]);
   } catch (error) {
     res.json(error.code);
   }

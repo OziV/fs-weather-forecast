@@ -13,10 +13,10 @@ const isSaved = async (req, res, next) => {
           },
         },
       };
-      let result = qObj;
+      let result = [[qObj], null];
       qObj.Temperature.Metric.Value = favorites[0].temperature;
       qObj.WeatherText = favorites[0].text;
-      res.status(StatusCodes.OK).json([result]);
+      res.status(StatusCodes.OK).json(result);
     } else {
       next();
     }

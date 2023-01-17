@@ -5,9 +5,10 @@ const { StatusCodes } = require("http-status-codes");
 const addToFavorites = async (req, res, next) => {
   let { city, temperature, text } = req.body;
   try {
-    let favorite = new Favorite(city, temperature, text);
-    favorite = await favorite.save();
-    res.status(StatusCodes.OK).json(favorite);
+    let favoriteNew = new Favorite(city, temperature, text);
+    favoriteNew = await favoriteNew.save();
+    const [favorites, _] = await Favorite.findAll();
+    res.status(StatusCodes.OK).json(favorites);
   } catch (error) {
     console.log(error);
   }
