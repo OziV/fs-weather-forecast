@@ -1,6 +1,6 @@
 # Weather Forecast
 
-> Realcommerce task for weather forecast.
+> "Realcommerce" task for weather forecast.
 
 ## Site URL
 
@@ -18,7 +18,7 @@
   - NodeJs
   - ExpressJs
 - Database
-  - SQL - [Freesqldatabase](https://www.freesqldatabase.com/)
+  - SQL - [Free sql database](https://www.freesqldatabase.com/)
 
 ## Deploy
 
@@ -32,8 +32,3 @@
 ## Demo Video
 
 [Demo Video](https://user-images.githubusercontent.com/89987476/212958525-ef9198e7-a1ec-4c11-ac98-552cc8ef2250.webm)
-
-
-### Disclosure
-
-Made as a task for Realcommerce.
