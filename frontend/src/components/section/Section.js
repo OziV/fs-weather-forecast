@@ -33,7 +33,7 @@ const Section = (data) => {
       setCityInfoData(cityInfo);
     }
     if (isMain) {
-      setCityInfoData(cityInfo[1]);
+      setCityInfoData([cityInfo[1]]);
     }
   }, [cityInfo]);
 
@@ -97,7 +97,9 @@ const Section = (data) => {
 
   return (
     <>
-      {!isLoading && cityInfoData && cityInfoData.length < 2 ? (
+      {!isLoading &&
+      cityInfoData[0] !== undefined &&
+      cityInfoData.length < 2 ? (
         cityInfoData.map((item, index) => {
           return textBuilder(item, index);
         })

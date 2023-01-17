@@ -34,6 +34,7 @@ const GlobalProvider = ({ children }) => {
         url: `${rootUrl}/weather/${cityData}/${cityName}`,
       });
       let data = response.data;
+
       setCityInfo([cityName, data[0]]);
     } catch (error) {
       console.log(error.response);
