@@ -30,3 +30,7 @@
 ## Demo Video
 
 [Demo Video](https://user-images.githubusercontent.com/89987476/212958525-ef9198e7-a1ec-4c11-ac98-552cc8ef2250.webm)
+
+## Screenshots
+
+![image_1](https://raw.githubusercontent.com/OziV/fs-weather-forecast/main/public/utils/screenshot-1.png)
