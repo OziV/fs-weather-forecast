@@ -12,8 +12,8 @@
 <div>
   <img src="https://raw.githubusercontent.com/OziV/icons/32dff777b67f7cee0546acc6928c1237a180c17a/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
   <img src="https://raw.githubusercontent.com/OziV/icons/32dff777b67f7cee0546acc6928c1237a180c17a/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/express/express-original-wordmark.svg" title="express" alt="express" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="mysql" alt="mysql" width="40" height="40"/>&nbsp; 
+  <img src="https://raw.githubusercontent.com/OziV/icons/32dff777b67f7cee0546acc6928c1237a180c17a/icons/express/express-original-wordmark.svg" title="express" alt="express" width="40" height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/OziV/icons/32dff777b67f7cee0546acc6928c1237a180c17a/icons/mysql/mysql-original-wordmark.svg" title="mysql" alt="mysql" width="40" height="40"/>&nbsp; 
   
   - [Free sql database](https://www.freesqldatabase.com/)
   </div>
